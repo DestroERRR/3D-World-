@@ -5,7 +5,7 @@ void texturedCube( float x, float y, float z, PImage texture, float size){
   //rotateX(rotx);
   //rotateY(roty);
    
-  world.noStroke();
+ world.noStroke();
    
  world.beginShape(QUADS);
  world.texture(texture);

@@ -3,6 +3,7 @@ class GameObject {
   PVector loc; 
   float size;
   float lives;
+  color myColor;
   
   //Default
   GameObject() {
@@ -11,20 +12,21 @@ class GameObject {
    lives = 1;
   }
   
-  GameObject(float x, float y, float z, float s) {
+  GameObject(float x, float y, float z, float s, color c) {
    lives = 1;
    loc = new PVector(x, y, z);
    size = s;
+   myColor = c;
   }
   
   void act() {
-    
+   
   }
   
   void show() {
     world.pushMatrix();
     world.translate(loc.x , loc.y, loc.z);
-    world.fill(white);
+    world.fill(myColor);
     world.stroke(100);
     world.box(size);
     world.popMatrix();

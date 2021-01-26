@@ -1,8 +1,18 @@
 void move() { 
- /* if (frameCount < 2) {
-   rbt.mouseMove(width/2, height/2);
-  }
-  */
+ if (frameCount < 2) {
+  rbt.mouseMove(width/2, height/2);
+  mouseX = width/2;
+  mouseY = height/2;
+}
+if (mouseX < 1) {
+  rbt.mouseMove(width-2, mouseY);
+} else if (mouseX > width-2) {
+  rbt.mouseMove(1, mouseY);
+} 
+leftRightAngle += (mouseX - pmouseX)*0.01;
+upDownAngle    += (mouseY - pmouseY)*0.005;
+if (upDownAngle > PI/2.5) upDownAngle = PI/2.5;
+if (upDownAngle < -PI/2.5) upDownAngle = -PI/2.5;
   
  if(akey && canMoveLeft() ) {
    eyex += cos(leftRightAngle - PI/2)*10;   //PI/2 is 90 extra degrees
@@ -26,7 +36,7 @@ void move() {
  }
  
  if (spacekey) {
-  objects.add(new Bullet()); 
+  objects.add(new Bullet(white)); 
  }
  
  focusx = eyex + cos(leftRightAngle)*300;
@@ -87,7 +97,7 @@ boolean canMoveLeft() {
   float fwdx, fwdy, fwdz;
   float leftx, leftz, rightx, rightz; ;
   int mapx, mapy, leftmapx, leftmapy, rightmapx, rightmapy;
-  int extraD = 60; 
+  int extraD = 40; 
   float becauseDirection = PI/2; // 90 degrees 
   
  fwdx = eyex + cos(leftRightAngle - becauseDirection)*200;
@@ -123,7 +133,7 @@ boolean canMoveRight() {
   float fwdx, fwdy, fwdz;
   float leftx, leftz, rightx, rightz; ;
   int mapx, mapy, leftmapx, leftmapy, rightmapx, rightmapy;
-  int extraD = 60; 
+  int extraD = 40; 
   float becauseDirection = PI/2; // 90 degrees 
   
  fwdx = eyex + cos(leftRightAngle + becauseDirection)*200;

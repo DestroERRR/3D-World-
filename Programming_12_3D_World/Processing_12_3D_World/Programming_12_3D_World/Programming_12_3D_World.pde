@@ -7,6 +7,7 @@ Robot rbt;
 color black = #000000;     // for oakPlanks 
 color white = #FFFFFF;     // white for empty space
 color steelBlue = #7092BE; //color for mossyBricks 
+color skyBlue = #00CCFF;   //for the sky
 
 //textures
 PImage mossyStone;
@@ -84,7 +85,7 @@ void setup() {
 void draw() { 
  world.beginDraw();
  world.textureMode(NORMAL);
- world.background(0);
+ world.background(skyBlue);
  
 // lights();
  
@@ -94,7 +95,7 @@ world.camera(eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz);
 //line(x1, y1, z1, x2, y2, z2);
 drawAxis();
 drawFloor(-2000, 2000, height, gridSize); // floor 
-drawFloor(-2000, 2000, height-gridSize*4, gridSize); // ceiling
+//drawFloor(-2000, 2000, height-gridSize*4, gridSize); // ceiling
 move();
 drawInterface();
 drawMap();
@@ -110,11 +111,14 @@ for(int i = 0; i < objects.size(); i++) {
   world.endDraw();
   image(world,0,0);
   
-  stroke(white);
-  strokeWeight(5);
-  line(width/2-20, height/2, width/2+20, height/2);
-  line(width/2, height/2-20, width/2, height/2+20);
   
+  HUD.beginDraw();
+  HUD.clear(); //erases all pixels 
+  drawCrosshair();
+  drawMinimap();
+  
+  HUD.endDraw();
+  image(HUD,0,0);
 }
 
 
