@@ -7,6 +7,7 @@ Robot rbt;
 color black = #000000;     // for oakPlanks 
 color white = #FFFFFF;     // white for empty space
 color steelBlue = #7092BE; //color for mossyBricks 
+color skyBlue = #00CCFF;   //for the sky
 
 //textures
 PImage mossyStone;
@@ -31,14 +32,30 @@ float upDownAngle;
 //Game Objects
 ArrayList<GameObject> objects; 
 
+//Canvases
+PGraphics world;
+PGraphics HUD;
+
+//Mode Framework 
+int mode = 2;
+final int INTRO = 1;
+final int GAME = 2;
+final int PAUSE =3;
+final int GAMEOVER = 4;
+final int GAMEWIN = 5; 
+
 void setup() {
+  //Creates canvases
+  world = createGraphics(width, height, P3D);
+  HUD = createGraphics(width, height, P2D);
+  
   //Creates game object list
   objects = new ArrayList<GameObject>();
   
   mossyStone = loadImage("Mossy_Stone_Bricks.png");
   oakPlanks = loadImage("Oak_Planks.png");
   purPurBlock = loadImage("Purpur_Block.png");
-  textureMode(NORMAL);
+ 
   
   
   noCursor();
@@ -53,10 +70,10 @@ void setup() {
   leftRightAngle = 0;
   upDownAngle = 0;
   
- size(displayWidth,displayHeight,P3D);
+ size(displayWidth,displayHeight,P2D);
  
  eyex = height/2;
- eyey = 93*height/100;
+ eyey = 90*height/100;
  eyez = height/2; 
  
  focusx = eyex;
@@ -74,31 +91,27 @@ void setup() {
 }
 
 void draw() { 
- background(0);
- 
-// lights();
- 
-pointLight(255, 255, 255, eyex, eyey, eyez);
 
-camera(eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz);
-//line(x1, y1, z1, x2, y2, z2);
-drawAxis();
-drawFloor(-2000, 2000, height, gridSize); // floor 
-drawFloor(-2000, 2000, height-gridSize*4, gridSize); // ceiling
-move();
-drawInterface();
-drawMap();
+   if (mode == INTRO){
+    intro();
+  }
+  else if (mode == GAME){
+    game();                  //World is in game();
+  }
+  else if (mode == PAUSE){
+    pause();
+  }
+  else if (mode == GAMEOVER){
+    gameOver();
+  }
+  else if (mode == GAMEWIN){
+    
+  }
+  else{
+   println("ERROR! YOUR MODE IS" + mode); 
+  }
 
-for(int i = 0; i < objects.size(); i++) {
-    GameObject obj = objects.get(i);
-    obj.act();
-    obj.show();
-    if (obj.lives == 0) {
-       objects.remove(i);
-    }
-}
-
-
+  
 }
 
 

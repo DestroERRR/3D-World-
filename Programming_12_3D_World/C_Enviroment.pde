@@ -31,11 +31,11 @@ void drawInterface() {
 }
 
 void drawAxis() {
-  stroke(200,0,0);
-  strokeWeight(3);
- line(0,0,0,1000,0,0); //x axis
- line(0,0,0,0,1000,0); //y axis
- line(0,0,0,0,0,1000); //z axis
+  world.stroke(200,0,0);
+  world.strokeWeight(3);
+ world.line(0,0,0,1000,0,0); //x axis
+ world.line(0,0,0,0,1000,0); //y axis
+ world.line(0,0,0,0,0,1000); //z axis
   
 }
 

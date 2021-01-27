@@ -32,11 +32,11 @@ class Particle extends GameObject {
    
    
    void show() {
-   pushMatrix();
-   translate(loc.x, loc.y, loc.z);
-   fill(white, time);
-   box(size);
-   popMatrix();
+   world.pushMatrix();
+   world.translate(loc.x, loc.y, loc.z);
+   world.fill(white, time);
+   world.box(size);
+   world.popMatrix();
    time--;
    }
   
