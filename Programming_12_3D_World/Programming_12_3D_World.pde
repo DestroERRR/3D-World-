@@ -8,6 +8,7 @@ color black = #000000;     // for oakPlanks
 color white = #FFFFFF;     // white for empty space
 color steelBlue = #7092BE; //color for mossyBricks 
 color skyBlue = #00CCFF;   //for the sky
+color evilRed = #990000;   //for enemies
 
 //textures
 PImage mossyStone;
@@ -70,7 +71,8 @@ void setup() {
   leftRightAngle = 0;
   upDownAngle = 0;
   
- size(displayWidth,displayHeight,P2D);
+ //size(displayWidth,displayHeight,P2D);
+   size(800,800,P2D);
  
  eyex = height/2;
  eyey = 90*height/100;

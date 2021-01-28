@@ -5,7 +5,7 @@ void game() {
  world.background(skyBlue);
  
  time++;
- if (time == 6) {
+ if (time == 60) {
   objects.add(new Enemy()); 
   time = 0;
  }
@@ -42,6 +42,7 @@ for(int i = 0; i < objects.size(); i++) {
   
   HUD.endDraw();
   image(HUD,0,0);
+
 }
 
 void gameClicks() {

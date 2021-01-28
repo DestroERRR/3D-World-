@@ -1,11 +1,12 @@
 class Enemy extends GameObject {
  
+  PVector rise;
+
+  
   Enemy() {
-   super(/*x,y,z*/);
-   //float x = random(-1000,1000);
-   //float y = height;
-  // float z = random(-1000,1000);
-   //loc = new PVector(x,y,z);
+   super(random(-1000,1000),height,random(-1000,1000),1,1);
+   
+   rise = new PVector(0,-2, 0);
  
   }
   
@@ -13,16 +14,15 @@ class Enemy extends GameObject {
   void show() {
   world.pushMatrix();
   world.translate(loc.x,loc.y,loc.z);
+  world.fill(evilRed);
   world.sphere(30);
   world.popMatrix();
   }
   
   void act() {
-    /*
-    for(int i = 0; i < 50; i++) {
-    this.y -= 5;
-    } 
-    */
+   if(this.loc.y <= 800 && this.loc.y > 760){
+      loc.add(rise);
+   }
     
     
     

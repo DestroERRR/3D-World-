@@ -98,7 +98,7 @@ boolean canMoveLeft() {
   float fwdx, fwdy, fwdz;
   float leftx, leftz, rightx, rightz; ;
   int mapx, mapy, leftmapx, leftmapy, rightmapx, rightmapy;
-  int extraD = 40; 
+  int extraD = 30; 
   float becauseDirection = PI/2; // 90 degrees 
   
  fwdx = eyex + cos(leftRightAngle - becauseDirection)*200;
@@ -134,7 +134,7 @@ boolean canMoveRight() {
   float fwdx, fwdy, fwdz;
   float leftx, leftz, rightx, rightz; ;
   int mapx, mapy, leftmapx, leftmapy, rightmapx, rightmapy;
-  int extraD = 40; 
+  int extraD = 30; 
   float becauseDirection = PI/2; // 90 degrees 
   
  fwdx = eyex + cos(leftRightAngle + becauseDirection)*200;
