@@ -34,6 +34,9 @@ class Bullet extends GameObject {
    dir = new PVector(eyex - x, eyey - h, eyez - z);
    dir.setMag(speed);
    EnemyBullet = true;
+   //enemyBulletX = x;
+   //enemyBulletY = z;
+   
    }
    
    

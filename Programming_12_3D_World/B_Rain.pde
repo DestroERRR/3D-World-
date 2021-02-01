@@ -21,7 +21,7 @@ class Rain extends GameObject{
   }
   
   void show() {
-    world.pushMatrix();
+   world.pushMatrix();
    world.translate(loc.x, loc.y, loc.z);
    world.fill(bloodRed);
    world.box(size);

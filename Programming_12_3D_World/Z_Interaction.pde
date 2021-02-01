@@ -39,6 +39,12 @@ void mouseReleased(){
     gameOverClicks();
     
   } 
+  else if (mode == OPTION) {
+    optionClicks(); 
+  }
+  else if (mode == GAMEWIN) {
+    gameWinClicks(); 
+  }
   
   
 }

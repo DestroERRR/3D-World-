@@ -13,6 +13,9 @@ void drawMinimap() {
   int miniX = int(eyex+2000)/gridSize;
   int miniY = int(eyez+2000)/gridSize;
   
+  //int enemyX = int(enemyBulletX+2000)/gridSize;
+  //int enemyY = int(enemyBulletY+2000)/gridSize;
+  
   HUD.textSize(18);
   HUD.fill(white);
   HUD.text("X: " + miniX,  50, 240);
@@ -22,7 +25,10 @@ void drawMinimap() {
   HUD.stroke(255,0,0);
   HUD.fill(255,0,0);
   HUD.rect(miniX*4+50, miniY*4+50, 6, 6); //indicator of where char is on map
-                                      //also must multiply by 4 because image is 4x bigger
+                                          //also must multiply by 4 because image is 4x bigger
+  //Enemy location                      
+  //HUD.fill(0);
+  //HUD.rect(enemyX*4+50, enemyY*4+50, 4, 4); 
 }
 
 /* 

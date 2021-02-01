@@ -1,14 +1,30 @@
-int time = 5999; 
+
 void game() {
  world.beginDraw();
  world.textureMode(NORMAL);
  world.background(skyBlue);
  
- //println(time);
- time++;
- if (time == 6000) {
+ if (intro.isPlaying() && mode != INTRO ) intro.pause(); //pausing intro music
+ 
+ //Playing game music
+ if (!mainTheme.isPlaying() && mode == GAME ) { //looping theme if it ends 
+ mainTheme.rewind();
+ mainTheme.play();
+ }
+ //mainTheme.play();
+  
+ 
+
+ enemyTime++;
+ if (enemyTime == 6000) {
   objects.add(new Enemy()); 
-  time = 0;
+  objects.add(new customObjects(heart) );
+  enemyTime = 0;
+ }
+ 
+ lifeTime++;
+ if (lifeTime == 6000) {
+   objects.add(new customObjects(heart) ); 
  }
  
  
@@ -18,12 +34,17 @@ world.pointLight(255, 255, 255, eyex, eyey, eyez);
 
 world.camera(eyex, eyey, eyez, focusx, focusy, focusz, upx, upy, upz);
 //line(x1, y1, z1, x2, y2, z2);
-drawAxis();
+//drawAxis();
 drawFloor(-2000, 2000, height, gridSize); // floor 
 //drawFloor(-2000, 2000, height-gridSize*4, gridSize); // ceiling
 move();
 drawInterface();
 drawMap();
+
+//This is for testing out objects 
+//addObject(1000,760,1000, 4, 4, 4, 90, 0, heartRotation, heart,red); //x,y,z,sizeX,sizeY,sizeZ,rotX,rotY,rotZ, shape, texture
+
+
 
 for(int i = 0; i < objects.size(); i++) {
     GameObject obj = objects.get(i);

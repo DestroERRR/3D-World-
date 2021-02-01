@@ -33,9 +33,9 @@ void drawInterface() {
 void drawAxis() {
   world.stroke(200,0,0);
   world.strokeWeight(3);
- world.line(0,0,0,1000,0,0); //x axis
- world.line(0,0,0,0,1000,0); //y axis
- world.line(0,0,0,0,0,1000); //z axis
+  world.line(0,0,0,1000,0,0); //x axis
+  world.line(0,0,0,0,1000,0); //y axis
+  world.line(0,0,0,0,0,1000); //z axis
   
 }
 

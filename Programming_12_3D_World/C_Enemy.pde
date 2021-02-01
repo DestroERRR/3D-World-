@@ -37,11 +37,13 @@ class Enemy extends GameObject {
     for(int i = 0; i < objects.size(); i++ ) {
      GameObject obj = objects.get(i);
      if (obj instanceof Bullet && !obj.EnemyBullet) {
-       if(dist(loc.x, loc.y, loc.z, obj.loc.x, obj.loc.y, obj.loc.z) < size + obj.size){
+       if(dist(loc.x, loc.y, loc.z, obj.loc.x, obj.loc.y, obj.loc.z) < size + obj.size*4){  //to make it easier to hit...
          lives--;
          println("it hit");
        }
      }
+     
+     
      
     }
     

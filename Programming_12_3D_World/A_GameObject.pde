@@ -6,6 +6,8 @@ class GameObject {
   color myColor;
   boolean EnemyBullet;
   
+  boolean touchingHeart;
+  
   //Default
   GameObject() {
    loc = new PVector(0,0,0);
@@ -32,6 +34,10 @@ class GameObject {
     world.box(size);
     world.popMatrix();
   }
+ 
   
+  
+ 
+ 
   
 }

@@ -1,16 +1,21 @@
 void move() { 
+ pushMatrix();
  if (frameCount < 2) {
   rbt.mouseMove(width/2, height/2);
   mouseX = width/2;
   mouseY = height/2;
 }
+
 if (mouseX < 1) {
   rbt.mouseMove(width-2, mouseY);
 } else if (mouseX > width-2) {
   rbt.mouseMove(1, mouseY);
 } 
+
 leftRightAngle += (mouseX - pmouseX)*0.01;
 upDownAngle    += (mouseY - pmouseY)*0.005;
+ popMatrix();
+
 if (upDownAngle > PI/2.5) upDownAngle = PI/2.5;
 if (upDownAngle < -PI/2.5) upDownAngle = -PI/2.5;
   
@@ -35,9 +40,12 @@ if (upDownAngle < -PI/2.5) upDownAngle = -PI/2.5;
    eyez -= sin(leftRightAngle)*10;
  }
  
- if (spacekey) {
+ shotTimer++;
+ if (spacekey && shotTimer > threshold) {
+  shot.rewind();
+  shot.play();
   objects.add(new Bullet(white)); 
-  
+  shotTimer = 0;
  }
  
  focusx = eyex + cos(leftRightAngle)*300;
@@ -59,13 +67,38 @@ if (upDownAngle < -PI/2.5) upDownAngle = -PI/2.5;
       for (int i = 0; i < objects.size(); i++) {  //for detection when enemy bullet hits player 
     GameObject obj = objects.get(i);
     if (obj instanceof Enemy || obj instanceof Bullet && obj.EnemyBullet) {
-     if (dist(eyex, eyey, eyez, obj.loc.x, obj.loc.y, obj.loc.z) < obj.size +10 ){
-       //println(charLife);
+     if (dist(eyex, eyey, eyez, obj.loc.x, obj.loc.y, obj.loc.z) < obj.size + 70 ){
+       oof.rewind();
+       oof.play();
        charLife--;
+       //println(charLife);
        objects.remove(i);
      }
+     
     }
+    
+      if (obj instanceof customObjects && obj.touchingHeart){  //gain 1 hp from touching the heart
+       if (dist(eyex, eyey, eyez, obj.loc.x, obj.loc.y, obj.loc.z) < 80 ){
+         life.rewind();
+         life.play();
+         
+         if (charLife < 3) {
+         charLife++;
+         }
+         
+         objects.remove(i);
+         //println(charLife);
+       // println("touches the Object");  
+       }
+       
+     }
+     
+     if (charLife == 0) mode = GAMEOVER;
+     
+    
  }
+ 
+ 
  
 }
 
@@ -101,6 +134,7 @@ boolean canMoveFoward() {
  } else {
   return true;  
  }
+ 
  
  }
   
