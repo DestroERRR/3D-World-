@@ -1,3 +1,5 @@
+//ctrl shift r to limit to size(800,800) to make mouse wrap around code
+
 import peasy.*;
 
 import java.awt.Robot;
