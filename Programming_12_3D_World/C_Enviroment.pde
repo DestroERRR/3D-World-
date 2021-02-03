@@ -1,3 +1,4 @@
+//to add more blocks, open the map image in paint (not 3D) and click the pencil option for the 1 by 1 pixels 
 void drawMap() {
   for (int x = 0; x < map.width; x++) {
     for (int y = 0; y < map.height; y++) {

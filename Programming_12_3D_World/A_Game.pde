@@ -19,6 +19,7 @@ void game() {
  if (enemyTime == 6000) {
   objects.add(new Enemy()); 
   objects.add(new customObjects(heart) );
+  //objects.add(new customObjects(zombie) );
   enemyTime = 0;
  }
  

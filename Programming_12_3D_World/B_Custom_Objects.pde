@@ -2,6 +2,7 @@ class customObjects extends GameObject{
   
   float speed;
   PVector g;
+  PVector chase; 
   
   float sizeX, sizeY, sizeZ;
   float rotX, rotY, rotZ;
@@ -9,6 +10,7 @@ class customObjects extends GameObject{
   PShape object;
   
   boolean heartRotation = false;
+  boolean zombieChase = false; 
   
   customObjects(PShape customObject) {
       //super(random(-1000,1000),height,random(-1000,1000),1,1);
@@ -30,7 +32,22 @@ class customObjects extends GameObject{
     }
     
     if (customObject == zombie) {
-      
+      /*
+      loc = new PVector(random(-1000,1000),height-10,random(-1000,1000) );
+      chase = new PVector(eyex - loc.x, eyey - loc.y, eyez - loc.z);
+      chase.setMag(5);
+      sizeX = 10;
+      sizeY = 10;
+      sizeZ = 10;
+      rotX = 90;
+      rotY = 45;
+      rotZ = 0;
+      heartRotation = false;
+      zombieChase = true; 
+      touchingHeart = false; 
+      texture = red; 
+      object = zombie; 
+      */
     }
     
   }
@@ -52,12 +69,14 @@ class customObjects extends GameObject{
     
     if(heartRotation == true){ // For only the heart to rotate
     rotZ += 4; 
-      if(this.loc.y <= 765) {
+      if(this.loc.y <= 765 && heartRotation == true) {
     loc.add(g);                // So heart can float down 
       }
       
-      
-    
+     /* if (zombieChase  == true) {
+       loc.add(chase); 
+      }
+    */
     }
     
     
