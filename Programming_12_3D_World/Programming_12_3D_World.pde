@@ -1,5 +1,3 @@
-//ctrl shift r to limit to size(800,800) to make mouse wrap around code
-
 import peasy.*;
 
 import java.awt.Robot;
@@ -32,6 +30,7 @@ PeasyCam camera;
 color black = #000000;     // for oakPlanks 
 color white = #FFFFFF;     // white for empty space
 color steelBlue = #7092BE; //color for mossyBricks 
+color gifObjectColor = #E6F76C;
 color skyBlue = #00CCFF;   //for the sky
 color evilRed = #990000;   //for enemies
 color bloodRed = #880808;  //for rain
@@ -90,6 +89,13 @@ float upDownAngle;
 //Game Objects
 ArrayList<GameObject> objects; 
 
+//GIF Variables
+int frames = 15;
+//PImage[] gif = new PImage[frames];
+ArrayList<PImage> gif;
+int pic = 0;
+
+
 //Canvases
 PGraphics world;
 PGraphics HUD;
@@ -110,6 +116,20 @@ final int OPTION = 6;
 
 
 void setup() {
+  
+  
+  gif = new ArrayList<PImage>(); 
+  int i = 0;
+  while (i < frames) {
+    String zero = ""; //empty string is 2 quotations side by side
+    if (i < 10) zero = "0";
+    gif.add(loadImage("frame_" + zero + i + "_delay-0.05s.gif"));
+    i++;
+  }
+  
+  
+  
+  
   //Music *********************************************** NOTE: THE MUSIC WAS NOT MADE BE ME; CREDITS GO TO THEIR RESPECTIVE OWNERS ************************************
   minim = new Minim(this);
   intro = minim.loadFile("mario bros theme.mp3");              //Intro, life, and shot all from Mario franchise by Nintendo 

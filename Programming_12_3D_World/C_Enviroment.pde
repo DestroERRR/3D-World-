@@ -9,9 +9,19 @@ void drawMap() {
   
     }
      if (c == black) {
-       for (int i = 0; i < 3; i++){ //for stacking the blocks 
+       for (int i = 0; i < 1; i++){ //for stacking the blocks 
        texturedCube(x*gridSize-2000, height-gridSize*i-100, y*gridSize-2000, purPurBlock, gridSize);
+       //texturedCube(x*gridSize-2000, height-gridSize*1-100, y*gridSize-2000, gridSize);
        }
+       
+       /*
+     if (c == gifObjectColor) {
+        for (int i = 0; i < 1; i++){
+         texturedCube(x*gridSize-2000, height-gridSize*i-100, y*gridSize - 2000, purPurBlock, gridSize); 
+        }
+     }
+       */
+       
      }
      
      
